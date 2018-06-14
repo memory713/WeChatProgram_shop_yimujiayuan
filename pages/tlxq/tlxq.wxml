@@ -1,0 +1,135 @@
+<view class="top">
+    {{tangliaoName}}清单汤料</view>
+
+<view class="details" style='background-color:#fff;'>
+    <view style=''>
+        <view class='details-top'>
+            <view>名称</view>
+            <view>等级</view>
+            <view>重量</view>
+        </view>
+        <view class='details-middle' wx:for="{{chuData}}" wx:key="key">
+            <view>{{item.name}}</view>
+            <view>优质</view>
+            <view>{{item.Number}}{{danwei}}</view>
+        </view>
+    </view>
+    <view class='details-bottom'>
+        <view>总重量
+            <text>\n{{suan}}</text>
+        </view>
+        <view>原材料成本
+            <text>\n{{chenben0}}元</text>
+        </view>
+        <view>加工成本
+            <text>\n{{jiagong}}元</text>
+        </view>
+    </view>
+    <!--折扣  -->
+    <view class='dazhe' style='text-align:left;border-top:1px solid #E8E9E9;border-bottom:1px solid #E8E9E9;margin:30rpx;padding:20rpx;' wx:if="{{shifouzhe}}">
+        <view style='display:flex;text-align:center;height:40rpx;line-height:40rpx;'>
+            <view style='width:27%;text-align:right;display:flex;justify-content: space-between;'>
+                <view style='display:inline-block;'>原</view>
+                <view style='display:inline-block;'>材</view>
+                <view style='display:inline-block;'>料</view>
+                <view style='display:inline-block;'>成</view>
+                <view style='display:inline-block;'>本：</view>
+            </view>
+            <view style='width:42%;'></view>
+            <text style='width:27%;text-align:right;' >  ￥{{chenben0}}</text>
+        </view>
+        <view style='display:flex;text-align:center;height:40rpx;line-height:40rpx;'>
+        <view style='width:27%;text-align:right;display:flex;justify-content: space-between;'>
+                <view style='display:inline-block;'>特</view>
+                <view style='display:inline-block;'>价</view>
+                <view style='display:inline-block;'>折</view>
+                <view style='display:inline-block;'>扣：</view>
+               
+            </view>
+
+           
+            <view style='width:42%;'></view>
+            <text style='width:27%;text-align:right; color:red;' decode="{{true}}" space="{{true}}"> {{discount*10}} 折</text>
+        </view>
+        <view style='display:flex;text-align:center;height:40rpx;line-height:40rpx;'>
+            <view style='width:27%;text-align:right;display:flex;justify-content: space-between;'>
+                <view style='display:inline-block;'>下</view>
+                <view style='display:inline-block;'>单</view>
+                <view style='display:inline-block;'>立</view>
+               
+                <view style='display:inline-block;'>减：</view>
+            </view>
+            <view style='width:42%;'></view>
+            <view style='width:27%;text-align:right;'>￥{{youhuihou}}</view>
+        </view>
+        <view style='display:flex;text-align:center;height:40rpx;line-height:40rpx;'>
+        <view style='width:27%;text-align:right;display:flex;justify-content: space-between;'>
+                <view style='display:inline-block;'>折</view>
+                <view style='display:inline-block;'>后</view>
+                <view style='display:inline-block;'>价：</view>
+               
+            </view>
+           
+            <view style='width:42%;'></view>
+            <view style='width:27%;text-align:right;'>￥{{zhehouPrice}}</view>
+        </view>
+    </view>
+
+
+    <view class='details-all'>
+        最终报价:
+        <text style='color:red;'>{{allPrice0}}</text>元(包邮）
+    </view>
+    <view class='details-note'>
+        温馨提示:因原材料市场行情有所变化,不同时期报价有所浮动
+    </view>
+
+
+</view>
+<view style='padding:10px;color:#7A7A7A;background-color:#fff;margin-top:10px;position:relative;'>
+    <!-- <view class='xin'>配送信息：</view> -->
+
+    <view class='addUp' style='margin-bottom:5px;'>
+
+        <view class='addIn'>收货人：{{addAddress.username}}</view>
+        <view class='addIn'>{{addAddress.telphone}}</view>
+    </view>
+    <view class='' style='width:80%;margin-left:100rpx;color:#7A7A7A;'>收货地址：{{addAddress.address}}</view>
+    <view class='bottom-address' bindtap='tianjiadizhi' style="margin-top:10rpx;">+更换或添加地址+</view>
+    <image src='../images/address.png' style='height: 50rpx;width: 50rpx;position:absolute;top:30rpx;left:6%;'></image>
+
+</view>
+<view style='background-color:#fff;'>
+    <view style='padding:10px;color:#7A7A7A;margin-top:10px;display:flex;width:90%;margin-left:5%;height:40rpx;'>
+        <image src='../images/fenlei.png' style='height: 40rpx;width: 40rpx;margin-right:10px;'></image>
+        <view style='width:80%;display:flex;height:100%;'>
+            <view class='xin'>汤料类型：</view>
+            <radio-group class="radio-group" bindchange="radioChange">
+                <label class="radio" wx:for="{{leixing}}" wx:key="key">
+                    <radio value="{{item.name}}" color="#5D1402" style="transform:scale(.5);margin-top:-5rpx;" checked="{{item.checked}}" />{{item.value}}
+                </label>
+            </radio-group>
+        </view>
+    </view>
+</view>
+<view style='padding:10px;color:#7A7A7A;background-color:#fff;margin-top:10px;padding-bottom:20px;'>
+    <view class='xin' style="border-bottom:none;">备注留言：</view>
+    <input placeholder=" " placeholder-style="color:#7A7A7A;" class='textArea' bindinput="textareaValue" />
+</view>
+<view style='width:100%;height:250rpx;'></view>
+
+<view class='sure' style="background-color:#fff;">
+    <button class='kf_button' open-type="contact" session-from="weapp" style='width:20%;height:100%;line-height:auto;float:left;background-color:#fff;border-radius:0px;'>
+        <view style='display:flex;flex-direction: column;text-align:center;justify-content: space-around;height:100%;padding-top:10rpx;'>
+            <image src='../images/kefu.png' style='width:50%;margin:0 auto;' mode="widthFix"></image>
+            <view style='width:100%;font-size:20rpx;'>客服</view>
+        </view>
+
+    </button>
+    <view style='background-color:#5D1402;width:40%;color:#fff;float:right;' bindtap="{{isDefault? 'buy':'nobuy'}}">{{xiadan}}</view>
+    <view style='width:40%;float:right;background-color:#F4EAC2;' bindtap='quxiao'>取消</view>
+
+
+
+
+</view>

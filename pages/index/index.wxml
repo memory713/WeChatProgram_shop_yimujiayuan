@@ -1,0 +1,100 @@
+<!--begin top  -->
+<view class="top">
+    <view class="top-change bc_white " style='background-color:{{color1}};color:{{fff1}}' bindtap='tldzClick'>{{tldz}}</view>
+    <view class="top-change bc_white " style='background-color:{{color2}};color:{{fff2}}' bindtap='wdldClick'>{{wdld}}</view>
+</view>
+<!--end  -->
+<!--video  -->
+<!-- <view class='video-all' wx:if="{{show1}}">
+<video  custom-cache="{{false}}" src="{{videoSrc.src}}" id='myVideo'   binderror="videoErrorCallback" controls  ></video>
+<view style='text-align:right;color:#5D1402;font-size:20rpx; height: 30rpx;line-height: 30rpx;margin-right:10rpx;'>温馨提示：请在WIFI环境下观看</view> -->
+
+<!-- </view> -->
+<!--轮播图  -->
+ <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000" wx:if="{{show1}}" circular="true">
+    <block wx:for="{{movies}}" wx:for-index="index" wx:key>
+        <swiper-item>
+            <image src="{{item.url}}" class="slide-image" mode="aspectFill" />
+        </swiper-item>
+    </block>
+</swiper> 
+
+
+<view class='tlsz-body' wx:if="{{show1}}">
+    <!--begin name  -->
+    <view class='print-name'>
+        <view class='input-text'>{{tlmc}}</view>
+        <input class='input-name' type="text" id='input-name' disabled="{{disabledSure}}" bindinput="bindInputBlur" value="{{inputValue}}" style='color:{{inputColor1}}' placeholder="请输入汤料名称" focus="{{tangliaojiaodian}}"/>
+        <view class='input-sure' bindtap='nameSure'>{{sureName}}</view>
+    </view>
+    <!--end  -->
+    <!--计量单位  -->
+    <view class='radio-all'>
+        <view style='margin-right:5px;width:20%;font-size:25rpx;text-align:center;'>计量单位</view>
+        <view style='display:flex;justify-content:space-around;width:80%;'>
+            <radio-group class="radio-group" bindchange="radioChange">
+                <label class="radio" wx:for="{{danwei}}" wx:key="key1">
+                    <radio value="{{item.name}}" checked="{{item.checked}}" color="#5D1402" class='Cradio' style='transform:scale(.6);font-size:25rpx;' />{{item.value}}
+                </label>
+            </radio-group>
+        </view>
+    </view>
+    <view class='beizhu' style=''>*棕色为选中，空白为未选中，图片可点击放大查看</view>
+
+    <!--循环材料  -->
+    <view class='middle'>
+        <view class='middle-body' wx:for="{{repeatGoods}}" wx:key="{{item.id}}">
+            <!--box  -->
+            <view class='middle-body-in'>
+                <image src='{{item.repeatImage}}' class='goods-name' data-list="{{item.repeatImage}}" data-src="{{item.repeatImage}}" bindtap='lookImages'></image>
+                <view class='middle-top'>
+                    <view style='font-size:25rpx;display:inline-block;height:40rpx;' data-repeatName="{{item.repeatName}}">{{item.repeatName}}</view>
+                    <input type="digit" class='middle-input' placeholder='{{item.delflag}}' data-input="{{index}}" bindblur="bindFocusNumber" value='{{item.NumberInputValue}}' bindfocus="huodejiaodian" style='min-height:0.5rem;height:50rpx;font-size:25rpx;margin-top:5rpx;'
+                        disabled='{{item.disabledInput}}' />
+                </view>
+
+                <image src='{{item.xuan}}' class='sureIcon' bindtap='ChooseIcon' id="{{index}}"></image>
+            </view>
+            <!--end  -->
+        </view>
+    </view>
+    <!--end  -->
+    <view style='width:100%;height:80rpx;color:#7a7a7a;text-align:center;line-height:80rpx;font-size:20rpx;'>已经到底了</view>
+
+
+    <!--begin bottom  -->
+    <view class='bottom' wx:if="{{bottomIf}}">
+        <view class='bottom-number'>
+            <view class='numberAll'>总类
+                <text class='orange'>{{leiNumber}}</text>种</view>
+            <view class='numberAll'>总重量
+                <text class='orange'>{{weightNumber}}</text>{{danwei2}}</view>
+        </view>
+        <view class='bottom-click' bindtap='tijiao'>提交</view>
+    </view>
+    <!--end bottom  -->
+</view>
+<!--end tldz-body  -->
+
+<!--body2-->
+<view class='body2' wx:if="{{show2}}">
+    <view class='number-all'>我的料单
+        <text>{{orderNumber}}</text>
+    </view>
+    <view class='number0' wx:if="{{number0}}" style='text-align:center;'>暂无我的汤料定制</view>
+    <!--订单循环  -->
+    <view class='order-details' wx:for="{{orderDetails}}" wx:key="key" wx:if="{{numberX}}" bindtap='myorder' data-index="{{index}}">
+        <view class='order-details-0'>
+            <view style='display:flex;justify-content: space-between;' class='order-details-1' >
+                <view class='details-middle'>料包名称：{{item.tlb}}</view>
+                <view class='details-bottom'>{{item.time}}</view>
+            </view>
+            <view class='details-top order-details-1' >订单号：{{item.ddh}}</view>
+
+        </view>
+        <view class='jinru'>
+            <image src='../images/youjiantou.png'></image>
+        </view>
+    </view>
+    <!--end  -->
+</view>

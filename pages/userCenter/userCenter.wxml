@@ -1,0 +1,94 @@
+<view class='body' style='height:100%;'>
+    <!--用户信息  -->
+    <view style="background:#fff;height:120px;width:100%; position:relative;z-index:1;overflow:hidden;">
+        <image class='mohu' src="{{userInfo.avatarUrl}}" animation="{{animationData}}" style="height:360px;width:100%;position:absolute;top:-120px;"></image>
+    </view>
+
+    <view class="userinfo" style='z-index:10;'>
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='begin-button'> 点击授权登录 </button>
+        <block wx:else>
+            <image bindtap="bindViewTap" class="userinfo-avatar" id='touxiang' src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view>
+    <!--end  -->
+    <!--订单信息  -->
+    <view class='order-all'>
+        <view class='order-all-top' bindtap='dingdanClick' style='border-bottom:1px solid #E8E9E9;' data-id='全部'>
+            <view class='top-box'>我的订单</view>
+            <view class='top-box font-gray' style='font-size:25rpx;'>查看全部订单 ></view>
+        </view>
+        <view class='order-all-buttom'>
+            <view class='box' bindtap='dingdanClick' data-id='待付款'>
+                <image src="../images/box1.png" ></image>
+                <view style='font-size:20rpx;'>待付款</view>
+            </view>
+            <view class='box' bindtap='dingdanClick' data-id='待发货'>
+                <image src="../images/box2.png" ></image>
+                <view style='font-size:20rpx;'>待发货</view>
+            </view>
+            <view class='box' bindtap='dingdanClick' data-id='待收货'>
+                <image src="../images/box3.png" ></image>
+                <view style='font-size:20rpx;'>待收货</view>
+            </view>
+            <!-- <view class='box'>
+                <view class="userinfo">
+                    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='begin-button'> 点击授权登录 </button>
+                    <block wx:else>
+                        <image bindtap="bindViewTap" mode="widthFix" id='touxiang' class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+                        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+                    </block>
+                </view>
+               
+            </view> -->
+            <view class='box' bindtap='dingdanClick' data-id='已完成'>
+                <image src="../images/box4.png" ></image>
+                <view style='font-size:20rpx;'>已完成</view>
+            </view>
+            <view class='box' bindtap='dingdanClick' data-id='全部'>
+                <image src="../images/box5.png" ></image>
+                <view style='font-size:20rpx;'>全部订单</view>
+            </view>
+
+            <!-- <view class='box' bindtap='dingdanClick' data-id='全部'>
+                <image src="../images/box5.png" mode="widthFix"></image>
+                <view style='font-size:18rpx;'>全部订单</view>
+            </view> -->
+        </view>
+
+    </view>
+    <!--end  -->
+    <!--地址  -->
+    <view class='address'>
+        <view class='order-all-top' bindtap='wodedizhi'>
+            <view class='top-box'>我的收货地址</view>
+            <view class='top-box font-gray'> ></view>
+        </view>
+        <!-- <view class='order-all-top none-border'>
+            <view class='address-l'>{{morenAddress}}</view>
+            <view class='address-r'>默认地址</view>
+        </view> -->
+    </view>
+    <!--end  -->
+    <!--addMODE  -->
+    <view class='more'>
+
+        <view class='box2' bindtap='guanyuwomen'>
+            <view>关于我们</view>
+            <view class='font-gray'>></view>
+        </view>
+        <button class='box2 kf_button' open-type="contact" session-from="weapp" style='padding:15px;line-height:auto;'>
+            <view>联系客服</view>
+            <view class='font-gray'>></view>
+        </button>
+        <!-- <button class="kf_button" open-type="contact" session-from="weapp" bindtap='kefu'>
+    <image class="kf_image" src="../images/aaa.jpg" mode='aspectFit'></image> -->
+        <!-- </button> -->
+        <view class='tuichu' bindtap='tuichu'>
+            退出登录
+        </view>
+        <view style='height:20px;width:100%;'></view>
+
+    </view>
+    <!--  -->
+</view>

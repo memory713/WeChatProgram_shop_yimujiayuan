@@ -1,0 +1,20 @@
+<view style='height:100%;' class='page_bd'>
+<view style='height:150rpx;width:100%;'></view>
+<view class="contact ">
+    <view class='phone box'>
+        <image src="../images/phone.png" mode='aspectFit'></image>
+        <!--8a8a8a  -->
+        <input placeholder="请输入手机号码" type='digit' value='{{value1}}' bindinput="input1"></input>
+    </view>
+    <view class='mima box'>
+        <image src="../images/mima.png" mode='aspectFit'></image>
+        <input placeholder="请输入密码" value='{{value2}}' password="true" bindinput="input2"></input>
+    </view>
+    <view class='anniu' bindtap='login'>登录</view>
+    <view class='buttom'>
+        <view bindtap='zhuce'>立即注册</view>
+        <view bindtap='zhaohui'>找回密码</view>
+    </view>
+    <view style='color:#5D1402;font-size:25rpx;margin-top:20rpx;'>*若您已经注册伊穆家园APP，请用伊穆家园APP账号密码登录</view>
+</view>
+</view>

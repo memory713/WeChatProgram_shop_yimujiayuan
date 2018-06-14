@@ -1,0 +1,11 @@
+<view style="color:#5D1402;text-align:center;" wx:if="{{panduan}}">{{wuliu}}</view>
+
+<view class='liebiao'style="color:#5D1402" wx:if="{{!panduan}}">
+    <view class='li'>{{line[0].context}}</view>
+     <view class='li'>{{line[0].ftime}}</view>
+</view>
+
+<view class='liebiao' wx:for="{{line}}" wx:key="key" wx:if="{{!panduan}}">
+    <view class='li'>{{item.context}}</view>
+     <view class='li'>{{item.ftime}}</view>
+</view>

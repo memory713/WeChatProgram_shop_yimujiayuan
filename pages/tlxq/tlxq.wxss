@@ -1,0 +1,139 @@
+page{
+    background-color: #E8E9E9;
+}
+view{
+    font-size: 25rpx;
+}
+.top{
+  width: 100%;
+  background-color: #F4EAC2;
+  height:70rpx;
+  font-size:25rpx;
+  text-align: center;
+  line-height: 70rpx;
+}
+.details{
+   
+    
+    font-size: 25rpx;
+    padding:10px;
+    text-align: center;
+    margin-bottom: 0;
+    
+}
+.details-top{
+    display:flex;
+    justify-content: space-around;
+    height: 50rpx;
+    line-height: 50rpx;
+    background-color: #EDECE8;
+}
+.details-middle{
+    /* display:flex; */
+    line-height: 50rpx;
+     /* justify-content: space-around; */
+     height: 50rpx;
+     border-bottom: 1px solid #EDECE8;
+     background-color: #F9F9F9;
+     color:#7A7A7A;
+}
+.details-middle view{
+    display: inline-block;
+    width: 33.33%;
+    float: left;
+
+}
+.details-bottom{
+    margin-top:10px;
+    margin-bottom:10px;
+    height:70rpx;
+    /* display:flex;
+    justify-content: space-around; */
+}
+.details-bottom view{
+     display: inline-block;
+    width: 33.33%;
+    float: left;
+}
+.details-all{
+    /* color:#5D1402; */
+    color:red;
+    font-size: 35rpx;
+    border:1px solid #5D1402;
+    height:70rpx;
+    line-height:70rpx;
+    border-radius: 5px;
+}
+.details-note{
+    font-size:20rpx;
+    color:#5D1402;
+    height:50rpx;
+    line-height: 50rpx;
+}
+.bottom-address{
+    color:#5D1402;
+    height:70rpx;
+    background-color: #F9F9F9;
+    line-height:70rpx;
+    text-align: center;
+    width:90%;
+    margin-left: 5%;
+}
+.radio-group{
+    display: flex;
+    justify-content: space-around;
+    line-height:40rpx;
+    height:40rpx;
+}
+.radio{
+    height:40rpx;
+    line-height: 40rpx;
+}
+.xin{
+    line-height: 40rpx;
+    width: 25%;
+   
+}
+.addIn{
+     color:#7A7A7A;
+}
+.textArea{
+    width: 100%;
+    border:1px solid #EDECE8;
+    height:30rpx;
+border-radius: 5px;
+padding:5rpx;
+}
+
+button[class="kf_button"]::after {
+  border: 0;
+  border-radius: 0px;
+} 
+
+button[class="button-hover"]::after {
+  border: 0;
+  border-radius: 0px;
+} 
+.sure{
+    /* display: flex; */
+    position: fixed;
+    width: 100%;
+     /* justify-content: space-around;  */
+    height:100rpx;
+    line-height: 100rpx;
+    font-size: 40rpx;
+    bottom: 0;
+    text-align: center;
+    border-top: 1px solid #EDECE8;
+}
+.addUp{
+    display: flex;
+    justify-content: space-between;
+    width:80%;
+    margin-left: 100rpx;
+}
+.dazhe view{
+    /* display:inline-block; */
+    
+}
+

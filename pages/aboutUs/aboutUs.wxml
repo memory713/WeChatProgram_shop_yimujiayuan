@@ -1,0 +1,52 @@
+<!-- <view class='top'>企业介绍
+</view>
+<view class='page'>
+    <image src='../images/About1.jpg' style='width:100%;'></image>
+    <text style='margin-top:10px;margin-bottom:10px; text-indent:40px;line-height:40rpx;' space="{{true}}" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   宁波西北梦电子商务有限公司，位于宁波市镇海区新城民和路399号东威大厦。西北梦就是带动西北人民富裕起来的梦想，将西北丰富的物产通过互联网卖向全国甚至全世界。现阶段公司主要业务是提供互联网餐饮服务，包括全国首款“标准化拉面汤料”、餐饮食材配送、清真食品销售等为一体综合性服务平台。\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2014年5月，“伊穆家园”公众号正式成立并运营。这标志着公司的成立。从这个具有西北穆斯林特色的微信公众平台开始，不断发展，到客户遍及全国各大中城市，拥有十万会员客户，公司自主开发的软件“伊穆家园”APP线上购物平台已于2016年9月1日在各大应用市场正式上线，公司旗下品牌“伊穆家园”在行业内知名度高居榜首。\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“伊穆家园”品牌的创立，在拉面口味正宗化、行业服务标准化等方面制定了详细的执行标准，间接促进了拉面行业的快速可持续发展，这种发展使得行业对人才的需求进一步加大、拉面行业核心竞争力进一步提升、相关产业连锁式发展进一步稳定，为带动地区经济、社会发展做出了杰出贡献。</text>
+</view>
+
+
+
+<view class='top'>企业产品
+</view>
+<view class='page'>
+    <image src='../images/About3.jpg' style='width:100%;'></image>
+</view>
+
+
+<view class='top'>相关单位
+</view>
+<view class='page'>
+    <image src='../images/About2.jpg' style='width:100%;'></image>
+    <text style='margin-top:10px;margin-bottom:10px; text-indent:40px;line-height:40rpx;' space="{{true}}" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   目前西北梦电商旗下拥有一家分公司、两家控股公司，分别是西北梦电子商务有限公司青海分公司、兰州伊穆家园清真食品有限公司、陕西伊穆家园食品开发有限公司，其中青海分公司主要负责市场营销、产品售后等工作，兰州伊穆家园清真食品有限公司主要负责清真调味品的开发、生产等，陕西伊穆家园食品开发有限公司主要负责清真食品开发、餐饮食材调运、货物运输等；公司始终秉承着用心制作放心产品、以安全诚信为本、以人为本的宗旨作为企业立足信仰。</text>
+</view>
+
+
+<view class='top'>使命&企业精神
+</view>
+<view class='page'>
+    <text style='margin-top:10px;margin-bottom:10px; text-indent:40px;line-height:40rpx;' space="{{true}}" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   让天下没有难做的拉面生意\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 面对失败，坦然接受；从零开始，义无反顾；坚持过后，继续坚持。</text>
+</view>
+
+<view class='top'>发展历程
+</view> -->
+<!-- <view class='page'>
+    <text style='margin-top:10px;margin-bottom:10px; text-indent:40px;line-height:40rpx;' space="{{true}}" decode="{{true}}">2014年5月，微信公众号平台“伊穆家园”上线
+2014年9月，兰州伊穆家园清真食品有限公司成立
+2015年1月，携手政府对沿海3000多家拉面店颁发八牌证书
+2015年4月，宁波西北梦电子商务有限公司注册成立
+2016年1月，与兰州穆青、伊春源等8家名企签订合作协议
+2016年4月，累计月销售额突破2000万
+2016年4月，天使轮融资230万
+2016年5月，3500平方米加工中心进行一站式生产
+2016年6月，实行西部总仓、华南分仓、华东分仓三仓布局
+2016年9月，伊穆家园APP上线，伊穆家园微电影《拉面人的一天》上线，日点击量达100000+
+2016年12月，12.26公司创立的第一届清真餐饮网络购物节“拉面购物节”圆满举行
+2017年4月，陕西伊穆家园食品开发有限公司成立
+2017年5月，成立宁波西北梦电子商务有限公司青海分公司
+2017年6月，在陕西西安建立加工工厂，与兰州当地食品工厂达成工作
+2018年1月，1.18公司创立的第二届清真餐饮网络购物节“拉面备货节”突破300万\n
+</text>
+</view> -->
+
+<image src='../images/about.jpg' style='width:100%;height:100%;margin:0;padding:0;'></image>

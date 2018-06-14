@@ -1,0 +1,14 @@
+<view style='width:100%;border-top:1px solid #EDECE8'></view>
+<view class="tips" wx:if="{{numAll}}" style='text-align:center;color:#7A7A7A;height:70rpx;line-height:70rpx;'>没有地址请先添加地址</view>
+<view class="details" wx:if="{{!numAll}}" wx:for="{{addressAll}}" wx:key="key" bindtap='dianji' data-id="{{index}}">
+    <image src='../images/address.png' style='height: 50rpx;width: 50rpx;margin-top:20rpx;'></image>
+
+    <view class='' style='width:80%;'>
+        <view class='details0 details0-top'>
+            <view decode="{{true}}">收货人：{{item.username}}</view>
+            <view> {{item.telphone}}</view>
+        </view>
+        <view class='details0'>收货地址：{{item.address}}</view>
+    </view>
+</view>
+<view class='tianjia' bindtap='tianjia'>添加地址</view>
