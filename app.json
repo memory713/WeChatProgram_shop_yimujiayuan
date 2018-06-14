@@ -1,0 +1,42 @@
+{
+    "pages": [
+        "pages/login/login",
+        "pages/index/index",
+        "pages/tlxq/tlxq",
+        "pages/myOrder/myOrder",
+        "pages/userCenter/userCenter",
+        "pages/addAddress/addAddress",
+        "pages/aboutUs/aboutUs",
+        
+        "pages/register/register",
+        "pages/findPassword/findPassword",
+        "pages/address/address",
+        "pages/myAddress/myAddress",
+        "pages/againOrder/againOrder",
+        "pages/lookWuliu/lookWuliu"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "配料大师",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "selectedColor": "#5D1402",
+        "color": "#8a8a8a",
+        "list": [
+            {
+                "iconPath": "icon/icon1.png",
+                "selectedIconPath": "icon/icon1s.png",
+                "pagePath": "pages/index/index",
+                "text": "汤料定制"
+            },
+            {
+                "iconPath": "icon/icon2.png",
+                "selectedIconPath": "icon/icon2s.png",
+                "pagePath": "pages/userCenter/userCenter",
+                "text": "个人中心"
+            }
+        ]
+    }
+}
