@@ -9,11 +9,11 @@
     <view class='details-middle' wx:for="{{chuData}}" wx:key="key">
         <view>{{item.name}}</view>
         <view>{{item.class}}</view>
-        <view>{{item.Number}}{{danwei}}</view>
+        <view>{{item.buycount}}{{danwei}}</view>
     </view>
     <view class='details-bottom'>
         <view>总重量
-            <text>\n{{suan}}</text>
+            <text>\n{{suan}}{{danwei}}</text>
         </view>
         <view>原材料成本
             <text>\n{{chenben0}}元</text>
@@ -47,7 +47,7 @@
 
            
             <view style='width:42%;'></view>
-            <text style='width:27%;text-align:right;color:red; ' decode="{{true}}" space="{{true}}"> {{discount*10}} 折</text>
+            <text style='width:27%;text-align:right;color:red; ' decode="{{true}}" space="{{true}}"> {{discount}} 折</text>
         </view>
         <view style='display:flex;text-align:center;height:40rpx;line-height:40rpx;'>
             <view style='width:27%;text-align:right;display:flex;justify-content: space-between;'>
@@ -70,7 +70,7 @@
             </view>
            
             <view style='width:42%;'></view>
-            <view style='width:27%;text-align:right;'>￥{{zhehouPrice}}</view>
+            <view style='width:27%;text-align:right;'>￥{{allPrice0}}</view>
         </view>
     </view>
 
@@ -90,10 +90,10 @@
         <image src='../images/address.png' style='height: 50rpx;width: 50rpx;margin-top:10rpx;'></image>
         <view class='' style='width:80%;margin-left:20rpx;'>
             <view class='addUp' style="display:flex;justify-content: space-between;width:80%;">
-                <view class='addIn'>{{addAddress.userName}}</view>
-                <view class='addIn'>{{addAddress.userPhone}}</view>
+                <view class='addIn'>{{address_name}}</view>
+                <view class='addIn'>{{address_phone}}</view>
             </view>
-            <view class='addIn'>{{addAddress.userAdderss}}</view>
+            <view class='addIn'>{{address}}</view>
         </view>
     </view>
 
@@ -102,7 +102,7 @@
  <image src='../images/tip.png' style='height: 50rpx;width: 50rpx;margin-top:10rpx;'></image>
  <view style='margin-left:20rpx;'>
     <view class='xin addIn'>汤料类型: {{tangliaoleixing}}</view>
-    <view class='xin addIn' style='border-bottom:none;'>备注留言：{{beizhuliuyan}}</view></view>
+    <view class='xin addIn' style='border-bottom:none;'>备注留言：{{comment}}</view></view>
 </view>
 <view class='sure'>
     <view style='background-color:#5D1402;width:100%;color:#fff;' bindtap='buy'>再来一单</view>

@@ -1,9 +1,7 @@
 const app = getApp()
+var request = require('../../utils/request.js');
 
 Page({
-    /**
-     * 页面的初始数据
-     */
     data: {
         morenAddress: {
             userName: "ppap",
@@ -24,17 +22,13 @@ Page({
         })
         // 获取地址列表
         var that = this;
-        wx.request({
-            url: app.dataHost,
-            data: {
-                "ac": "myaddress",
-                "userId": app.userId,
-            },
-            method: "GET",
-            header: {
-                'content-type': 'application/json' // 默认值
+        request.request('POST', 'userAddress.getAddressList',
+          {
+            params: {
+                "userid": app.userId,
             },
             success: function (res) {
+              console.log(res)
                 wx.hideLoading()
                 // var that = this;
                     if (res.data.code !== 200){
@@ -42,17 +36,17 @@ Page({
                     }else{
                         that.setData({ numAll:false });
                     }
-                    var addressAll0 = [];
-                    for (var x in res.data.data) {
-                        var msg = {};
-                        msg.userName = res.data.data[x].username;
-                        msg.userAdderss = res.data.data[x].address;
-                        msg.userPhone = res.data.data[x].telphone;
-                        msg.id = res.data.data[x].id;//地址ID
-                        addressAll0.push(msg);
+                    // 判断是否为默认地址
+                    for (var x in res.data.data){
+                      if (res.data.data[x].is_default == 1){
+                        res.data.data[x].is_default = true
+                      }else{
+                        res.data.data[x].is_default = false
+                      }
                     }
+                    
                     that.setData({
-                        addressAll: addressAll0
+                      addressAll: res.data.data
                     })
             },
             fail: function () {
@@ -82,17 +76,14 @@ Page({
             success: function (res) {
                 if (res.confirm) {
                     // 删除地址
-                    wx.request({
-                        url: app.dataHost,
-                        data: {
-                            "ac": "deladdress",
-                            "id": Aid
-                        },
-                        method: "GET",
-                        header: {
-                            'content-type': 'application/json' // 默认值
+                  request.request('POST', 'userAddress.removeAddress',
+                    {
+                      params: {
+                            "addressid": Aid,
+                            "userid": app.userId
                         },
                         success: function (res) {
+                          console.log(res)
                             wx.hideLoading()
                                 wx.showToast({
                                     title: res.data.message,

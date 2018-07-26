@@ -1,4 +1,6 @@
 const app = getApp()
+var request = require('../../utils/request.js');
+
 Page({
 
   /**
@@ -21,19 +23,13 @@ Page({
     //   "postcom": options.gs,
     //       "postid": options.dh
       // 请求物流消息
-      wx.request({
-          url: app.dataHost,
-          data: {
-              "ac": "kuaidi",
+      request.request('POST', 'public.getExpress', {
+        params: {
               "postcom": options.gs,
               "postid": options.dh
           },
-          method: "GET",
-          header: {
-              'content-type': 'application/json' // 默认值
-          },
           success: function (res) {
-              if (res.data.message !=="ok"){
+              if (res.data.code !==200){
                   that.setData({
                       wuliu: res.data.message,
                       panduan:true

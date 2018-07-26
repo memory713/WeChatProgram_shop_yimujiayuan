@@ -1,4 +1,5 @@
 const app = getApp()
+var request = require('../../utils/request.js');
 
 // directory.js
 var address = require('../../utils/city.js')
@@ -30,7 +31,8 @@ Page({
         city: '',
         area: '',
         fang0: null,
-        areaInfo: "请选择所在城市"
+        areaInfo: "请选择所在城市",
+        moren:1
     },
 
     /**
@@ -222,6 +224,14 @@ Page({
             detailsValue: value3.replace(/\s+/g, ''),
         })
     },
+    // 选取默认地址
+    radioChange:function(e){
+      console.log(e.detail.value)
+    this.setData({
+      moren: e.detail.value
+    })
+
+    },
     // 点击添加按钮
     addButton: function () {
         var that = this;
@@ -259,30 +269,38 @@ Page({
                 title: '加载中',
             })
             // 添加地址
-            wx.request({
-                url: app.dataHost,
-                data: {
-                    "ac": "addaddress",
-                    "userId": app.userId,
+            request.request('POST', 'userAddress.addAddress',
+              {
+                params: {
+                    "userid": app.userId,
                     "username": num1,//收货人
                     "telphone": num2,//电话
                     "address": num4,//地址详情
-                    "shengfen": num0 //	省份
-                },
-                method: "GET",
-                header: {
-                    'content-type': 'application/json' // 默认值
+                    "shengfen": num0, //	省份
+                    "default":that.data.moren
                 },
                 success: function (res) {
-                    wx.hideLoading()
+                  console.log(res)
+                  wx.hideLoading()
+                  if(res.data.code == 200){
                     wx.showToast({
-                        title: '成功',
-                        icon: 'success',
-                        duration: 2000
+                      title: '添加成功',
+                      icon: 'success',
+                      duration: 2000
                     })
                     setTimeout(function () {
-                        wx.navigateBack()
+                      wx.navigateBack()
                     }, 2000)
+                  }else{
+                    wx.showToast({
+                      title: res.data.message,
+                      icon: 'none',
+                      duration: 2000
+                    })
+
+                  }
+                    
+                   
                 },
                 fail: function () {
                     wx.showToast({

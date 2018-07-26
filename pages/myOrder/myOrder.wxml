@@ -14,39 +14,39 @@
     <view class='kong'></view>
 
 
-    <view class="content" wx:for="{{orderList}}" wx:if="{{nowtab=='全部' || item.status==nowtab}}" wx:key="key">
+    <view class="content" wx:for="{{orderList}}" wx:if="{{nowtab=='全部' || item.status_panduan==nowtab}}" wx:key="key">
         <view class="topContent flex-row v-center" bindtap='again' data-top ="{{index}}">
             <view style='height:40px;width:40px;margin:0;padding:0;'>
                 <image src='../images/tang.jpg' style='height:40px;width:40px;margin:0;padding:0;' mode="aspectFit"></image>
             </view>
             <view class="rightContent">
                 <view style='display:flex;justify-content: space-between;height:20px;width:100%;line-height:22.5px;'>
-                    <view >料包名称：{{item.goodsName}}</view>
+                    <view >料包名称：{{item.order_name}}</view>
                     <view   class="color-orange">
-                        {{item.status}}
+                        {{item.order_status}}
                     </view>
                 </view>
                 <view style='display:flex;justify-content: space-between;height:20px;width:100%;line-height:17.5px;'>
                     <view   class="color-orange">
-                        ￥{{item.total}}
+                        ￥{{item.totalmoney}}
                     </view>
-                    <view style='color:#7a7a7a;'>{{item.time}}</view>
+                    <view style='color:#7a7a7a;'>{{item.createdate}}</view>
                 </view>
             </view>
 
         </view>
         <view class="bottomContent flex-row space-between v-center">
             <view>
-                 <view wx:if="{{item.status=='待付款'}}">
+                 <view wx:if="{{item.status_panduan=='待付款'}}">
                     <button  class="btn" bindtap='goPay' data-id="{{index}}">去支付</button>
                 </view>  
-                 <view wx:if="{{item.status=='待发货'}}">
+                 <view wx:if="{{item.status_panduan=='待发货'}}">
                      <!-- <button  class="btn" bindtap='tixing'>提醒发货</button>  -->
                 </view> 
-                <view wx:if="{{item.status=='待收货'}}">
+                <view wx:if="{{item.status_panduan=='待收货'}}">
                     <button class="btn" bindtap='lookWu' data-id="{{index}}">查看物流</button>
                 </view>
-                <view wx:if="{{item.status=='已完成'}}">
+                <view wx:if="{{item.status_panduan=='已完成'}}">
                     <button class="btn" bindtap='again' data-top="{{index}}">再来一单</button>
                 </view>
             </view>

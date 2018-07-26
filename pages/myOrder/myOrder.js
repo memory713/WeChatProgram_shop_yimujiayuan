@@ -1,4 +1,6 @@
 var util = require('../../utils/util.js');
+var request = require('../../utils/request.js');
+
 const app = getApp()
 Page({
 
@@ -27,81 +29,82 @@ Page({
                 nowtab: options.id
             })
         }
-        // 请求全部订单列表
-        wx.request({
-            url: app.dataHost,
-            data: {
-                "ac": "mysouporderlist2",
-                "userId": app.userId,
-            },
-            method: "GET",
-            header: {
-                'content-type': 'application/json' // 默认值
-            },
-            success: function (res) {
-                var repeatchenben = [];
-                // 加工费剥离
-                for (var x in res.data.data) {
-                    var msg3 = []
-                    for (var y in res.data.data[x].goodsinfo) {
-                        msg3.push(res.data.data[x].goodsinfo[y].buycount);
-                    }
-                    repeatchenben.push(msg3);
-                }
-                var shuliang = []
-                for (var x in repeatchenben){
-                    var num9 = 0
-                    for (var y in repeatchenben[x]){
-                        num9 += parseInt(repeatchenben[x][y])
-                    }
-                    num9 = num9 / 500
-                    shuliang.push(num9);
-                }
+        // // 请求全部订单列表
+        // wx.request({
+        //     url: app.dataHost,
+        //     data: {
+        //         "ac": "mysouporderlist2",
+        //         "userId": app.userId,
+        //     },
+        //     method: "GET",
+        //     header: {
+        //         'content-type': 'application/json' // 默认值
+        //     },
+        //     success: function (res) {
+        //         var repeatchenben = [];
+        //         // 加工费剥离
+        //         for (var x in res.data.data) {
+        //             var msg3 = []
+        //             for (var y in res.data.data[x].goodsinfo) {
+        //                 msg3.push(res.data.data[x].goodsinfo[y].buycount);
+        //             }
+        //             repeatchenben.push(msg3);
+        //         }
+        //         var shuliang = []
+        //         for (var x in repeatchenben){
+        //             var num9 = 0
+        //             for (var y in repeatchenben[x]){
+        //                 num9 += parseInt(repeatchenben[x][y])
+        //             }
+        //             num9 = num9 / 500
+        //             shuliang.push(num9);
+        //         }
 
 
-                var repeatGoods2 = [];
-                for (var x in res.data.data) {
-                    var msg = {};
-                    // 判断状态
-                    if (res.data.data[x].orderinfo.ordertype == 1) {
-                        msg.status = "待付款"
-                    } else if (res.data.data[x].orderinfo.ordertype == 2) {
-                        msg.status = "待发货"
-                    } else if (res.data.data[x].orderinfo.ordertype == 3) {
-                        msg.status = "待收货"
-                    } else if (res.data.data[x].orderinfo.ordertype == 4) {
-                        msg.status = "已完成"
-                    };
+        //         var repeatGoods2 = [];
+        //         for (var x in res.data.data) {
+        //             var msg = {};
+        //             // 判断状态
+        //             if (res.data.data[x].orderinfo.ordertype == 1) {
+        //                 msg.status = "待付款"
+        //             } else if (res.data.data[x].orderinfo.ordertype == 2) {
+        //                 msg.status = "待发货"
+        //             } else if (res.data.data[x].orderinfo.ordertype == 3) {
+        //                 msg.status = "待收货"
+        //             } else if (res.data.data[x].orderinfo.ordertype == 4) {
+        //                 msg.status = "已完成"
+        //             };
 
 
 
-                    msg.total1 = res.data.data[x].orderinfo.usemoney;
-                    msg.total2 = shuliang[x];
-                    msg.total = parseFloat(msg.total1) * 0.01 + parseFloat(msg.total2)
+        //             msg.total1 = res.data.data[x].orderinfo.usemoney;
+        //             msg.total2 = shuliang[x];
+        //             msg.total = parseFloat(msg.total1) * 0.01 + parseFloat(msg.total2)
                    
-                    msg.total = msg.total.toFixed(2)
+        //             msg.total = msg.total.toFixed(2)
 
 
-                    msg.goodsName = res.data.data[x].orderinfo.order_name;
+        //             msg.goodsName = res.data.data[x].orderinfo.order_name;
                     
-                    msg.id = res.data.data[x].orderinfo.id;
-                    msg.expresscom = res.data.data[x].orderinfo.expresscom;
-                    msg.expressno = res.data.data[x].orderinfo.expressno;
-                    msg.time = util.formatTime(res.data.data[x].orderinfo.createtime, 'Y/M/D h:m:s');
-                    repeatGoods2.push(msg);
-                }
-                that.setData({
-                    orderList: repeatGoods2
-                })
-            },
-            fail: function (res) {
-                wx.showToast({
-                    title: '您的网络连接有问题',
-                    icon: 'none',
-                    duration: 2000
-                })
-            }
-        })
+        //             msg.id = res.data.data[x].orderinfo.id;
+        //             msg.expresscom = res.data.data[x].orderinfo.expresscom;
+        //             msg.expressno = res.data.data[x].orderinfo.expressno;
+        //             msg.time = util.formatTime(res.data.data[x].orderinfo.createtime, 'Y/M/D h:m:s');
+        //             repeatGoods2.push(msg);
+        //         }
+        //         that.setData({
+        //             orderList: repeatGoods2
+        //         })
+        //     },
+        //     fail: function (res) {
+        //         wx.showToast({
+        //             title: '您的网络连接有问题',
+        //             icon: 'none',
+        //             duration: 2000
+        //         })
+        //     }
+        // })
+        this.requestOrder(1)
     },
 
     // 去支付
@@ -123,6 +126,7 @@ Page({
     },
     // 查看物流
     lookWu: function (e) {
+      console.log(e)
         var index = e.currentTarget.dataset.id;
         var wuliu = this.data.orderList[index].expresscom
         var wuliudanhao = this.data.orderList[index].expressno
@@ -136,6 +140,67 @@ Page({
         this.setData({
             nowtab: el.currentTarget.dataset.nowtab
         })
+    },
+    // 请求订单列表
+    requestOrder: function (page) {
+      var that = this;
+      request.request('POST', 'soupOrder.getSoupOrderList', {
+        params: {
+          "userid": app.userId,
+          "pageindex": page,
+          "pagesize": 20,
+          "compute": "EGT",
+          "type": 1
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.code !== 200) {
+           
+          
+          } else {
+                for (var x in res.data.data) {
+                    // 判断状态
+                    if (res.data.data[x].ordertype == 1) {
+                      res.data.data[x].status_panduan = "待付款"
+                    } else if (res.data.data[x].ordertype == 2) {
+                      res.data.data[x].status_panduan = "待发货"
+                    } else if (res.data.data[x].ordertype == 3) {
+                      res.data.data[x].status_panduan = "待收货"
+                    } else if (res.data.data[x].ordertype == 4) {
+                      res.data.data[x].status_panduan = "已完成"
+                    };
+                  
+                }
+
+            if (page == 1) {
+              that.setData({
+                orderList: res.data.data
+              })
+            } else {
+              that.setData({
+                orderList: that.data.orderList.concat(res.data.data)
+              })
+            }
+            wx.hideLoading()
+
+
+            // 重加载
+            if (res.data.data.length == 20) {
+              page++
+              that.requestOrder(page)
+            }
+          }
+        },
+        fail: function () {
+          wx.hideLoading()
+          wx.showToast({
+            title: '您的网络连接有问题',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      })
+
     },
 
     /**

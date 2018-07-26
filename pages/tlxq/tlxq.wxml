@@ -10,13 +10,13 @@
         </view>
         <view class='details-middle' wx:for="{{chuData}}" wx:key="key">
             <view>{{item.name}}</view>
-            <view>优质</view>
-            <view>{{item.Number}}{{danwei}}</view>
+            <view>{{item.level}}</view>
+            <view>{{item.weight}}{{danwei}}</view>
         </view>
     </view>
     <view class='details-bottom'>
         <view>总重量
-            <text>\n{{suan}}</text>
+            <text>\n{{suan}}{{danwei}}</text>
         </view>
         <view>原材料成本
             <text>\n{{chenben0}}元</text>
@@ -49,7 +49,7 @@
 
            
             <view style='width:42%;'></view>
-            <text style='width:27%;text-align:right; color:red;' decode="{{true}}" space="{{true}}"> {{discount*10}} 折</text>
+            <text style='width:27%;text-align:right; color:red;' decode="{{true}}" space="{{true}}"> {{discount}} 折</text>
         </view>
         <view style='display:flex;text-align:center;height:40rpx;line-height:40rpx;'>
             <view style='width:27%;text-align:right;display:flex;justify-content: space-between;'>
@@ -67,11 +67,9 @@
                 <view style='display:inline-block;'>折</view>
                 <view style='display:inline-block;'>后</view>
                 <view style='display:inline-block;'>价：</view>
-               
             </view>
-           
             <view style='width:42%;'></view>
-            <view style='width:27%;text-align:right;'>￥{{zhehouPrice}}</view>
+            <view style='width:27%;text-align:right;'>￥{{allPrice0}}</view>
         </view>
     </view>
 

@@ -4,17 +4,22 @@
 
 
 <view class="details" wx:if="{{!numAll}}" wx:for="{{addressAll}}" wx:key="key" style='position:relative;'>
-<image src='../images/address.png' style='height: 50rpx;width: 50rpx;margin-top:30rpx;position:absolute;top:0;'></image>
-    <view style='width:70%;margin-left:60rpx;'>
-        <view class='details0 detailsup'>
-            <view>收货人：{{item.userName}} </view>
-            <view>{{item.userPhone}}</view>
-        </view>
-        <view class='details0'>详细地址：{{item.userAdderss}}</view>
+  <image src='../images/address.png' style='height: 50rpx;width: 50rpx;margin-top:30rpx;position:absolute;top:0;'></image>
+  <view style='width:70%;margin-left:60rpx;'>
+    <view class='details0 detailsup'>
+      <view>收货人：{{item.username}} </view>
+      <view>{{item.telphone}}</view>
     </view>
-    <view style='width:10%;border-left:1px solid #5D1402'>
-        <image style="width: 35rpx; height: 35rpx; background-color: #fff;position:absolute;right:20px;top:15px;" mode="aspectFit" src="../images/delete.png" bindtap='dianji' data-index="{{index}}"></image>
-    </view>
+    <view class='details0'>详细地址：{{item.address}}</view>
+  </view>
+
+  <view style='width:10%;' wx:if="{{item.is_default}}" >
+    <image style="width: 35rpx; height: 35rpx; background-color: #fff;position:absolute;right:60px;top:18px;" mode="aspectFit" src="../images/gou.png"></image>
+  </view>
+
+  <view style='width:10%;border-left:1px solid #5D1402'>
+    <image style="width: 35rpx; height: 35rpx; background-color: #fff;position:absolute;right:20px;top:18px;" mode="aspectFit" src="../images/delete.png" bindtap='dianji' data-index="{{index}}"></image>
+  </view>
 </view>
 
 <view class='tianjia' bindtap='tianjia'>添加</view>
